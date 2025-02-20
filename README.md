@@ -29,6 +29,8 @@
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
+https://opengameart.org/content/16x16-game-assets
+https://opengameart.org/content/outdoor-tiles-again
 
 
 
@@ -47,6 +49,7 @@
 <br>
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
+https://www.youtube.com/watch?v=dd1Fe3AiWdw
 
 
 
