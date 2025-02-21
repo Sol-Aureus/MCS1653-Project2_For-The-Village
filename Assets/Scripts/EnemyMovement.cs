@@ -10,6 +10,9 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float Health;
+    [SerializeField] private float Damage;
+    [SerializeField] private float AttackSpeed;
 
     private Transform target;
     private Vector3 targetPosition;

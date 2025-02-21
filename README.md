@@ -32,6 +32,9 @@
 https://opengameart.org/content/16x16-game-assets
 https://opengameart.org/content/outdoor-tiles-again
 https://opengameart.org/content/mage-rework
+https://opengameart.org/node/45981
+https://ventilatore.itch.io/the-fantasy-tileset-animated-character
+https://ruskom.itch.io/moon-mage-asset
 
 
 

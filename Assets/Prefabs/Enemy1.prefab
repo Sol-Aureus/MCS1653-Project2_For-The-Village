@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 567315583, guid: 74b127fd78b9a474298276eb1e3ca262, type: 3}
+  m_Sprite: {fileID: 303518586, guid: e00932cd8ffa19844a0852cab62ca762, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,3 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  Health: 25
+  Damage: 5
+  AttackSpeed: 0.5
