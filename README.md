@@ -50,7 +50,8 @@ https://opengameart.org/content/outdoor-tiles-again
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 https://www.youtube.com/watch?v=dd1Fe3AiWdw
-
+https://www.youtube.com/watch?v=3TRlePNrNR8
+https://www.youtube.com/watch?v=5j8A79-YUo0
 
 
 <br>
