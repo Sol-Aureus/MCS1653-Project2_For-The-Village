@@ -31,6 +31,7 @@
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
 https://opengameart.org/content/16x16-game-assets
 https://opengameart.org/content/outdoor-tiles-again
+https://opengameart.org/content/mage-rework
 
 
 
