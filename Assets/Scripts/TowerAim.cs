@@ -9,13 +9,19 @@ public class TowerAim : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform projectileSpawnPoint;
 
     [Header("Atributes")]
     [SerializeField] private float range;
     [SerializeField] private float fireRate;
     [SerializeField] private float damage;
+    [SerializeField] private float pierce;
+    [SerializeField] private float speed;
+    [SerializeField] private float lifeTime;
 
     private Transform target;
+    private float timeUntilFire = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +34,9 @@ public class TowerAim : MonoBehaviour
     {
         FindTarget();
 
+        // Counts the time until the next shot
+        timeUntilFire += Time.deltaTime;
+
         // If there is a target, rotate towards it
         if (target != null)
         {
@@ -39,6 +48,15 @@ public class TowerAim : MonoBehaviour
                 // Removing the target
                 target = null;
             }
+            else
+            {
+                // Fires if the time until the next shot is greater than the fire rate
+                if (timeUntilFire >= fireRate)
+                {
+                    Fire();
+                    timeUntilFire = 0;
+                }
+            }
         }
 
     }
@@ -47,7 +65,7 @@ public class TowerAim : MonoBehaviour
     private void FindTarget()
     {
         // Find all enemies in range
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(rotatePoint.position, range, (Vector2) rotatePoint.position, 0);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(rotatePoint.position, range, (Vector2) rotatePoint.position, 0, enemyLayer);
 
         // If there are enemies in range, set the first one as the target
         if (hits.Length > 0)
@@ -81,6 +99,21 @@ public class TowerAim : MonoBehaviour
     private bool CheckTargetInRange()
     {
         return Vector2.Distance(rotatePoint.position, target.position) <= range;
+    }
+
+    // Fires a projectile at the target
+    private void Fire()
+    {
+        // Instantiates a projectile at the spawn point
+        GameObject projectileObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+
+        // Gets the projectile manager component and sets the target
+        ProjectileManager projectileScript = projectileObject.GetComponent<ProjectileManager>();
+        projectileScript.SetTarget(target);
+        projectileScript.SetDamage(damage);
+        projectileScript.SetPierce(pierce);
+        projectileScript.SetSpeed(speed);
+        projectileScript.SetlifeTime(lifeTime);
     }
 
     // Draws the range of the tower

@@ -61,4 +61,18 @@ public class EnemyMovement : MonoBehaviour
 
         rb.velocity = direction * moveSpeed;
     }
+
+    // Deals damage to the enemy
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("Enemy took damage");
+
+        Health -= damage;
+        if (Health <= 0)
+        {
+            // Calls the event to notify the spawner that an enemy has died
+            EnemySpawner.onEnemyDeath.Invoke();
+            Destroy(gameObject);
+        }
+    }
 }
