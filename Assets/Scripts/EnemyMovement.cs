@@ -10,7 +10,6 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float Health;
     [SerializeField] private float Damage;
     [SerializeField] private float AttackSpeed;
 
@@ -60,19 +59,5 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = (targetPosition - transform.position).normalized; // Get the direction to the target between 0 and 1
 
         rb.velocity = direction * moveSpeed;
-    }
-
-    // Deals damage to the enemy
-    public void TakeDamage(float damage)
-    {
-        Debug.Log("Enemy took damage");
-
-        Health -= damage;
-        if (Health <= 0)
-        {
-            // Calls the event to notify the spawner that an enemy has died
-            EnemySpawner.onEnemyDeath.Invoke();
-            Destroy(gameObject);
-        }
     }
 }

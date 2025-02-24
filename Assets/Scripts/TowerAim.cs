@@ -23,12 +23,6 @@ public class TowerAim : MonoBehaviour
     private Transform target;
     private float timeUntilFire = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -91,7 +85,7 @@ public class TowerAim : MonoBehaviour
         float angle = Mathf.Atan2(target.position.y - rotatePoint.position.y, target.position.x - rotatePoint.position.x) * Mathf.Rad2Deg;
 
         // Rotate the tower towards the target
-        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
         rotatePoint.rotation = targetRotation;
     }
 
@@ -114,6 +108,7 @@ public class TowerAim : MonoBehaviour
         projectileScript.SetPierce(pierce);
         projectileScript.SetSpeed(speed);
         projectileScript.SetlifeTime(lifeTime);
+        projectileScript.SetRotation(rotatePoint.rotation);
     }
 
     // Draws the range of the tower

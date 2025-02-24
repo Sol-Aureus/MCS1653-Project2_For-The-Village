@@ -8,24 +8,19 @@ public class ProjectileManager : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     [Header("Atributes")]
-    public float speed;
-    public float damage;
-    public float pierce;
-    public float lifeTime;
+    private Transform orientation;
+    private float speed;
+    private float damage;
+    private float pierce;
+    private float lifeTime;
 
     private Transform target;
     private Vector2 direction;
 
-    // Start is called before the first frame update
-    void Start()
+    // Awake is called when the script instance is being loaded
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        orientation = GetComponent<Transform>();
     }
 
     // FixedUpdate is called a fixed number of times per second
@@ -79,11 +74,16 @@ public class ProjectileManager : MonoBehaviour
         speed = newSpeed;
     }
 
+    public void SetRotation(Quaternion newRotation)
+    {
+        orientation.rotation = newRotation;
+    }
+
     // Called when the projectile collides with something
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Deal damage to the enemy
-        other.GetComponent<EnemyMovement>().TakeDamage(damage);
+        other.GetComponent<EnemyHealth>().TakeDamage(damage);
         // Check if the projectile has pierce
         if (pierce <= 0)
         {
