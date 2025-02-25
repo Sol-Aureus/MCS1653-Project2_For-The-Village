@@ -10,9 +10,9 @@
 ---
 
 # Required ReadMe Info for ALL MCS1653 Projects
-* **Project**   - 
-* **Your Name** - 
-* **Date**      - 
+* **Project**   - Tower Defense
+* **Your Name** - Eric Harrison
+* **Date**      - 24/02/2025
 
 <br>
 
@@ -23,25 +23,20 @@
 <br>
 
 2. **What creative additions did you make? How can we find them?**
-
+Towers can get killed by the enemies
 
 
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
-https://opengameart.org/content/16x16-game-assets
-https://opengameart.org/content/outdoor-tiles-again
-https://opengameart.org/content/mage-rework
-https://opengameart.org/node/45981
-https://ventilatore.itch.io/the-fantasy-tileset-animated-character
-https://ruskom.itch.io/moon-mage-asset
+https://kenmi-art.itch.io/cute-fantasy-rpg
 
 
 
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)
-
+No
 
 
 <br>
@@ -62,13 +57,13 @@ https://www.youtube.com/watch?v=0x4EigFnWws
 <br>
 
 7. **What trouble did you have with this project?**
-
+Tower placement
 
 
 <br>
 
 8. **Is there anything else we should know?**
-
+No
 
 
 

@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float Damage;
     [SerializeField] private float AttackSpeed;
+    [SerializeField] private float pathOffset;
 
     private Transform target;
     private Vector3 targetPosition;
@@ -47,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 // Set the new target
                 target = LevelManager.instance.points[pathIndex];
-                targetPosition = target.position + new Vector3(Random.Range(-10, 10) / 10, Random.Range(-10, 10) / 10, 0);
+                targetPosition = target.position + new Vector3(Random.Range(-pathOffset * 100, pathOffset * 100) / 100, Random.Range(-pathOffset * 100, pathOffset * 100) / 100, 0);
             }
         }
     }

@@ -178,3 +178,4 @@ MonoBehaviour:
   moveSpeed: 5
   Damage: 5
   AttackSpeed: 0.5
+  pathOffset: 0.5
