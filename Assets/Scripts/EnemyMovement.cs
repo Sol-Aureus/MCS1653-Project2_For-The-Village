@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 // Set the new target
                 target = LevelManager.instance.points[pathIndex];
-                targetPosition = target.position + new Vector3(Random.Range(-pathOffset * 100, pathOffset * 100) / 100, Random.Range(-pathOffset * 100, pathOffset * 100) / 100, 0);
+                targetPosition = target.position + new Vector3(Random.Range(-pathOffset * 100, pathOffset * 100) / 100, (Random.Range(-pathOffset * 100, pathOffset * 100) + pathOffset) / 100, 0);
             }
         }
     }

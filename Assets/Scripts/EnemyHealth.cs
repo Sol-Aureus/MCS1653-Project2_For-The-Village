@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float baseHealth;
 
     private float health;
+    private bool isDestroyed = false;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -21,10 +22,11 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("Enemy took damage");
 
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && !isDestroyed)
         {
             // Calls the event to notify the spawner that an enemy has died
             EnemySpawner.onEnemyDeath.Invoke();
+            isDestroyed = true;
             Destroy(gameObject);
         }
     }
