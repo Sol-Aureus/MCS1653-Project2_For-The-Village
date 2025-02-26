@@ -10,10 +10,9 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float Damage;
-    [SerializeField] private float AttackSpeed;
     [SerializeField] private float pathOffset;
 
+    public float currentMoveSpeed;
     private Transform target;
     private Vector3 targetPosition;
     private int pathIndex = 0;
@@ -25,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         target = LevelManager.instance.points[pathIndex];
         targetPosition = target.position;
         transform.position = targetPosition;
+        currentMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -59,6 +59,11 @@ public class EnemyMovement : MonoBehaviour
         // Move towards the target
         Vector2 direction = (targetPosition - transform.position).normalized; // Get the direction to the target between 0 and 1
 
-        rb.velocity = direction * moveSpeed;
+        rb.velocity = direction * currentMoveSpeed;
+    }
+
+    public void ResetSpeed()
+    {
+        currentMoveSpeed = moveSpeed;
     }
 }

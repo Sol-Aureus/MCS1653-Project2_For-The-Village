@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 
-public class TowerAim : MonoBehaviour
+public class EnemyAim : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform rotatePoint;
@@ -22,6 +22,14 @@ public class TowerAim : MonoBehaviour
 
     private Transform target;
     private float timeUntilFire = 0;
+    private float targetDistance;
+    private EnemyMovement movement;
+
+    // Awake is called when the script instance is being loaded
+    private void Awake()
+    {
+        movement = GetComponent<EnemyMovement>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -47,32 +55,44 @@ public class TowerAim : MonoBehaviour
                 // Fires if the time until the next shot is greater than the fire rate
                 if (timeUntilFire >= fireRate)
                 {
+                    movement.currentMoveSpeed = 0;
                     Fire();
                     timeUntilFire = 0;
                 }
             }
         }
-
+        else
+        {
+        movement.ResetSpeed();
+        }
     }
 
     // Gets all the enemies in range and sets the closest one as the target
     private void FindTarget()
     {
         // Find all enemies in range
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(rotatePoint.position, range, (Vector2) rotatePoint.position, 0, enemyLayer);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(rotatePoint.position, range, (Vector2)rotatePoint.position, 0, enemyLayer);
 
         // If there are enemies in range, set the first one as the target
         if (hits.Length > 0)
         {
-            // Set the first enemy to enter the range as the target
-            target = hits[0].transform;
+            target = null;
 
             // Check if there are closer enemies
             foreach (RaycastHit2D hit in hits)
             {
-                if (Vector2.Distance(rotatePoint.position, hit.transform.position) < Vector2.Distance(rotatePoint.position, target.position))
+                if (target == null)
+                {
+                    // Set the first enemy to enter the range as the target
+                    target = hits[0].transform;
+                    targetDistance = Vector2.Distance(rotatePoint.position, target.position);
+                    continue;
+                }
+
+                if (Vector2.Distance(rotatePoint.position, hit.transform.position) < targetDistance)
                 {
                     target = hit.transform;
+                    targetDistance = Vector2.Distance(rotatePoint.position, target.position);
                 }
             }
         }
@@ -102,7 +122,7 @@ public class TowerAim : MonoBehaviour
         GameObject projectileObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
 
         // Gets the projectile manager component and sets the target
-        ProjectileManager projectileScript = projectileObject.GetComponent<ProjectileManager>();
+        EnemyProjectileManager projectileScript = projectileObject.GetComponent<EnemyProjectileManager>();
         projectileScript.SetTarget(target);
         projectileScript.SetDamage(damage);
         projectileScript.SetPierce(pierce);

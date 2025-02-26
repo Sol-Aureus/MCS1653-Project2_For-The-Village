@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileManager : MonoBehaviour
+public class EnemyProjectileManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
@@ -83,7 +83,7 @@ public class ProjectileManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Deal damage to the enemy
-        other.GetComponent<EnemyHealth>().TakeDamage(damage);
+        other.GetComponent<TowerHealth>().TakeDamage(damage);
         // Check if the projectile has pierce
         if (pierce <= 0)
         {
