@@ -8,25 +8,15 @@ public class Plots : MonoBehaviour
     [Header("References")]
     [SerializeField] private Color hoverColor;
 
-    [Header("Events")]
-    public static UnityEvent onTowerDeath = new UnityEvent();
-
     private SpriteRenderer sr;
     private GameObject tower;
     private Color startColor;
-
-    // Awake is called when the script instance is being loaded
-    private void Awake()
-    {
-        // Initialize the event
-        onTowerDeath.AddListener(TowerDestroyed);
-    }
 
     // Start is called before the first frame update
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        //startColor = sr.color;
+        startColor = sr.color;
     }
 
     // OnMouseEnter is called when the mouse entered the GUIElement or Collider
@@ -46,12 +36,14 @@ public class Plots : MonoBehaviour
     {
         if (tower == null)
         {
-            // Get the current tower
+            // Gets the current tower
             GameObject towerToBuild = BuildManager.instance.GetCurrentTower();
 
             // Instantiate the tower in the plot with the same position and rotation
-            Instantiate(towerToBuild, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
-            tower = towerToBuild;
+            tower = Instantiate(towerToBuild, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+
+            // Tells the tower what plot it's on
+            tower.GetComponent<TowerHealth>().SetPlot(this);
         }
     }
 
