@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 50
+  plotScript: {fileID: -9206448747655427126, guid: 0a46609e09605bd4389355f392173889, type: 3}
 --- !u!114 &4437212334623703551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,12 +247,12 @@ MonoBehaviour:
     m_Bits: 8
   projectilePrefab: {fileID: 4846766739089288063, guid: 34ca742dbd0a39f429f6bc0e0185f679, type: 3}
   projectileSpawnPoint: {fileID: 4016908940564182647}
-  range: 15
+  range: 50
   fireRate: 0.33
   damage: 1
   pierce: 1
   speed: 25
-  lifeTime: 15
+  lifeTime: 12
 --- !u!1 &7529556304389913296
 GameObject:
   m_ObjectHideFlags: 0

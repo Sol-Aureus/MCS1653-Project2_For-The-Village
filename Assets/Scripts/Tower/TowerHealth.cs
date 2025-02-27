@@ -9,7 +9,6 @@ public class TowerHealth : MonoBehaviour
 
     private float health;
     private bool isDestroyed = false;
-    public Plots towerPlot;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -26,16 +25,10 @@ public class TowerHealth : MonoBehaviour
         if (health <= 0 && !isDestroyed)
         {
             // Calls the event to notify the spawner that a tower has died
-            towerPlot.TowerDestroyed();
+            Plots.onTowerDeath.Invoke();
 
             isDestroyed = true;
             Destroy(gameObject);
         }
-    }
-
-    // Sets the plot the tower is on
-    public void SetPlot(Plots plot)
-    {
-        towerPlot = plot;
     }
 }
