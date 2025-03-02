@@ -32338,6 +32338,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: VillageTreasure
       objectReference: {fileID: 0}
+    - target: {fileID: 4655526142323918544, guid: cb691e37413b88c4ab4b37dfa2649ba1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983111772411521446, guid: cb691e37413b88c4ab4b37dfa2649ba1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983111772411521446, guid: cb691e37413b88c4ab4b37dfa2649ba1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7806190770743117829, guid: cb691e37413b88c4ab4b37dfa2649ba1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.5

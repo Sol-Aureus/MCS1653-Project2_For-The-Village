@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private HealthBar healthBar;
+
     [Header("Attributes")]
     [SerializeField] private float baseHealth;
 
+    private float scaledHealth;
     private float health;
     private bool isDestroyed = false;
 
@@ -14,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         health = baseHealth;
+        healthBar.UpdateHealthBar(health, baseHealth);
     }
 
     // Deals damage to the enemy
@@ -21,7 +26,10 @@ public class EnemyHealth : MonoBehaviour
     {
         Debug.Log("Enemy took damage");
 
+        // Updates the health
         health -= damage;
+        healthBar.UpdateHealthBar(health, scaledHealth);
+
         if (health <= 0 && !isDestroyed)
         {
             // Calls the event to notify the spawner that an enemy has died
@@ -33,6 +41,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void UpdateHealth(float scaling)
     {
-        health = Mathf.RoundToInt(baseHealth * scaling);
+        scaledHealth = Mathf.RoundToInt(baseHealth * scaling);
+        health = scaledHealth;
+        healthBar.UpdateHealthBar(health, scaledHealth);
     }
 }
