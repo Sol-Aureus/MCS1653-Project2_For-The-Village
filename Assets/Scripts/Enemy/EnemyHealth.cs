@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
 
         // Updates the health
         health -= damage;
-        healthBar.UpdateHealthBar(health, scaledHealth);
+        healthBar.UpdateHealthBar(Mathf.RoundToInt(health), scaledHealth);
 
         if (health <= 0 && !isDestroyed)
         {

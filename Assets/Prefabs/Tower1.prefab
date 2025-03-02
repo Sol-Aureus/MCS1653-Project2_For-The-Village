@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860695560454501341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7195399448863838936}
-  baseHealth: 500
+  baseHealth: 50
   healRate: 0.01
   rampUp: 0.001
   maxRampUp: 2
@@ -430,12 +430,12 @@ MonoBehaviour:
     m_Bits: 8
   projectilePrefab: {fileID: 4846766739089288063, guid: 34ca742dbd0a39f429f6bc0e0185f679, type: 3}
   projectileSpawnPoint: {fileID: 4016908940564182647}
-  range: 15
-  fireRate: 0.33
+  range: 10
+  fireRate: 0.3
   damage: 5
-  pierce: 50
-  speed: 25
-  lifeTime: 15
+  pierce: 1
+  speed: 40
+  lifeTime: 1.2
 --- !u!1 &5282714408590629733
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,7 +127,7 @@ public class EnemyAim : MonoBehaviour
         projectileScript.SetDamage(damage);
         projectileScript.SetPierce(pierce);
         projectileScript.SetSpeed(speed);
-        projectileScript.SetlifeTime(lifeTime);
+        projectileScript.SetlifeTime(range * lifeTime);
         projectileScript.SetRotation(rotatePoint.rotation);
     }
 

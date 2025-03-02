@@ -63,7 +63,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2491382907224162700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -450,9 +450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2706093271744485111}
   baseHealth: 1000
-  healRate: 0
-  rampUp: 0
-  maxRampUp: 0
+  healRate: 0.0001
+  rampUp: 0.00000025
+  maxRampUp: 1.6
   isBase: 1
   towerPlot: {fileID: 0}
 --- !u!1 &4842054597197665283

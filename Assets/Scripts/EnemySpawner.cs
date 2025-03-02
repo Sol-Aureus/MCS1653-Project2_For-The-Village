@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Events")]
     public static UnityEvent onEnemyDeath = new UnityEvent();
 
+    private float currentSpawnRate;
     private int currentWave = 1;
     private float timeToSpawn = 0;
     private int enemiesAlive;
@@ -50,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
         timeToSpawn += Time.deltaTime;
 
         // Spawns an enemy if the time to spawn is greater than the spawn rate and there are still enemies to spawn
-        if (timeToSpawn >= (spawnRate + (Random.Range(-10, 10) / 50)) && enemiesToSpawn > 0)
+        if (timeToSpawn >= (currentSpawnRate + (Random.Range(-100, 100) / 1000)) && enemiesToSpawn > 0)
         {
             SpawnEnemy();
             enemiesToSpawn--;
@@ -71,6 +72,13 @@ public class EnemySpawner : MonoBehaviour
         return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScaling));
     }
 
+    // Determines the spawn rate based on the number of enemies to spawn
+    private float SpawnRatePerWave()
+    {
+        // Sets the rate of spawning based on the current wave
+        return spawnRate / Mathf.Pow(currentWave, difficultyScaling);
+    }
+
     // Starts the wave
     private IEnumerator StartWave()
     {
@@ -79,6 +87,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Sets the number of enemies to spawn based on the current wave
         enemiesToSpawn = EnemiesPerWave();
+        currentSpawnRate = SpawnRatePerWave();
         isSpawning = true;
     }
 

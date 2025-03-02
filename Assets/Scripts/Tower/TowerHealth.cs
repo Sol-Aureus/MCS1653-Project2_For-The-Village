@@ -28,7 +28,7 @@ public class TowerHealth : MonoBehaviour
         health = baseHealth;
         currentHealRate = healRate;
         healCounter = 0;
-        healthBar.UpdateHealthBar(health, baseHealth);
+        healthBar.UpdateHealthBar(Mathf.RoundToInt(health), baseHealth);
     }
 
     // FixedUpdate is called a fixed number of times per second
@@ -58,11 +58,11 @@ public class TowerHealth : MonoBehaviour
                     currentHealRate = (healRate * maxRampUp);
                 }
             }
-            else
+            else if (health != baseHealth)
             {
                 health = baseHealth;
             }
-            healthBar.UpdateHealthBar(health, baseHealth);
+            healthBar.UpdateHealthBar(Mathf.RoundToInt(health), baseHealth);
         }
     }
 
@@ -73,7 +73,7 @@ public class TowerHealth : MonoBehaviour
 
         // Updates the health
         health -= damage;
-        healthBar.UpdateHealthBar(health, baseHealth);
+        healthBar.UpdateHealthBar(Mathf.RoundToInt(health), baseHealth);
         healCounter = 2;
         currentHealRate = healRate;
 
