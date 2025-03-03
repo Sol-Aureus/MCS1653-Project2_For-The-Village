@@ -304,8 +304,7 @@ GameObject:
   - component: {fileID: 7806190770743117829}
   - component: {fileID: 8371764402033187043}
   - component: {fileID: -7219234640500316761}
-  - component: {fileID: 2603632471706661771}
-  - component: {fileID: 4437212334623703551}
+  - component: {fileID: 9216230041211507780}
   m_Layer: 6
   m_Name: Tower1
   m_TagString: Untagged
@@ -393,7 +392,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03, y: 0.1}
   m_Size: {x: 0.7, y: 1.15}
   m_Direction: 0
---- !u!114 &2603632471706661771
+--- !u!114 &9216230041211507780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -402,40 +401,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 4655526142323918544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5207e04eee9d11843baedd6f553ae26b, type: 3}
+  m_Script: {fileID: 11500000, guid: a0fc91ef211477142a6e7bf7a36eb073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7195399448863838936}
-  baseHealth: 50
-  healRate: 0.01
-  rampUp: 0.001
-  maxRampUp: 2
-  isBase: 0
-  towerPlot: {fileID: -9206448747655427126, guid: 0a46609e09605bd4389355f392173889, type: 3}
---- !u!114 &4437212334623703551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4655526142323918544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c45e11df9cdb6848b12ceb53a4634a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  healthBarObject: {fileID: 860695560454501341}
   rotatePoint: {fileID: 8665223855531679480}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
   projectilePrefab: {fileID: 4846766739089288063, guid: 34ca742dbd0a39f429f6bc0e0185f679, type: 3}
   projectileSpawnPoint: {fileID: 4016908940564182647}
+  baseHealth: 50
+  healRate: 0.05
+  rampUp: 0.001
+  maxRampUp: 2
   range: 10
+  lifeTime: 1.2
   fireRate: 0.3
   damage: 5
   pierce: 1
   speed: 40
-  lifeTime: 1.2
+  isBase: 0
+  towerPlot: {fileID: -9206448747655427126, guid: 0a46609e09605bd4389355f392173889, type: 3}
 --- !u!1 &5282714408590629733
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
         // Spawns a random enemy prefab at the first point
         GameObject prefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         GameObject prefabSpawned = Instantiate(prefabToSpawn, LevelManager.instance.points[0].position, Quaternion.identity); // Quaternion.identity means no rotation
-        prefabSpawned.GetComponent<EnemyHealth>().UpdateHealth(Mathf.Pow(currentWave, difficultyScaling));
+        prefabSpawned.GetComponent<Enemy>().UpdateHealth(Mathf.Pow(currentWave, difficultyScaling));
     }
 
     // Called when an enemy is destroyed

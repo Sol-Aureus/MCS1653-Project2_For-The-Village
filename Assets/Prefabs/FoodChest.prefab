@@ -338,9 +338,9 @@ GameObject:
   - component: {fileID: 7806190770743117829}
   - component: {fileID: 8371764402033187043}
   - component: {fileID: 1311389947220101160}
-  - component: {fileID: 1310864694733406422}
+  - component: {fileID: -618609905345226105}
   m_Layer: 6
-  m_Name: VillageTreasure
+  m_Name: FoodChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,8 +359,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5303094056724008932}
   - {fileID: 13499469633845745}
+  - {fileID: 5303094056724008932}
   - {fileID: 319894064666374205}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -436,7 +436,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &1310864694733406422
+--- !u!114 &-618609905345226105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,14 +445,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4655526142323918544}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5207e04eee9d11843baedd6f553ae26b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e4a451a8ece56249a819c61290ea63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2706093271744485111}
+  healthBarObject: {fileID: 2491382907224162700}
+  rotatePoint: {fileID: 319894064666374205}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  projectilePrefab: {fileID: 8826039370106297578}
+  projectileSpawnPoint: {fileID: 319894064666374205}
   baseHealth: 1000
   healRate: 0.0001
   rampUp: 0.00000025
   maxRampUp: 1.6
+  range: 0
+  lifeTime: 0
+  fireRate: 0
+  damage: 0
+  pierce: 0
+  speed: 0
   isBase: 1
   towerPlot: {fileID: 0}
 --- !u!1 &4842054597197665283
@@ -764,7 +777,7 @@ Transform:
   m_GameObject: {fileID: 8826039370106297578}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12672207, y: 0.15740672, z: -0.0012959412}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

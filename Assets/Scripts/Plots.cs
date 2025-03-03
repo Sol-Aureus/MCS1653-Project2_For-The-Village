@@ -43,7 +43,7 @@ public class Plots : MonoBehaviour
             tower = Instantiate(towerToBuild, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
 
             // Tells the tower what plot it's on
-            tower.GetComponent<TowerHealth>().SetPlot(this);
+            tower.GetComponent<Tower>().SetPlot(this);
         }
     }
 

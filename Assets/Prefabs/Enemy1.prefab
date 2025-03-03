@@ -685,9 +685,7 @@ GameObject:
   - component: {fileID: 3802473532105305905}
   - component: {fileID: 393757120044445171}
   - component: {fileID: -8867615265496258497}
-  - component: {fileID: 7194081247589782228}
-  - component: {fileID: 2923561652988722769}
-  - component: {fileID: -4638793903692904135}
+  - component: {fileID: 329457596856809354}
   m_Layer: 3
   m_Name: Enemy1
   m_TagString: Untagged
@@ -708,9 +706,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3378816891648773354}
   - {fileID: 2191870471609208958}
   - {fileID: 1314800463687974317}
+  - {fileID: 3378816891648773354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &393757120044445171
@@ -775,7 +773,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.06, y: 0.15}
   m_Size: {x: 0.75, y: 1.25}
   m_Direction: 0
---- !u!114 &7194081247589782228
+--- !u!114 &329457596856809354
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -784,44 +782,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 9021141082635656667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12289d6ab2bc82c47a66c22152815a85, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b6444e56099e3d4d85af2e3d88e6760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 7644027176426623891}
-  baseHealth: 12
---- !u!114 &2923561652988722769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9021141082635656667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a9a7a689f9b49448d90c1c28f49ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  pathOffset: 0.5
-  currentMoveSpeed: 0
---- !u!114 &-4638793903692904135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9021141082635656667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64a526240f48f7e4e8798020d42747ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  healthBarObject: {fileID: 7456144649006516630}
   rotatePoint: {fileID: 1314800463687974317}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
   projectilePrefab: {fileID: 4846766739089288063, guid: 874e40ed5bb218749987dff058c99048, type: 3}
   projectileSpawnPoint: {fileID: 4540713534982367698}
+  moveSpeed: 5
+  pathOffset: 0.5
+  baseHealth: 12
   range: 8
   fireRate: 0.4
   damage: 1
