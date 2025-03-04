@@ -239,7 +239,7 @@ public class Tower : MonoBehaviour
     // Detects when an object is colliding with it
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("CantPlace"))
+        if (collision.CompareTag("CantPlace") && !isBase)
         {
             spriteRenderer.color = Color.white;
             canPlace = true;

@@ -132,8 +132,6 @@ public class Enemy : MonoBehaviour
     // Deals damage to the enemy
     public void TakeDamage(float damage)
     {
-        Debug.Log("Enemy took damage");
-
         // Updates the health
         health -= damage;
         healthBar.UpdateHealthBar(Mathf.RoundToInt(health), scaledHealth);
