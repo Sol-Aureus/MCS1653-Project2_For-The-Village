@@ -305,9 +305,10 @@ GameObject:
   - component: {fileID: 8371764402033187043}
   - component: {fileID: -7219234640500316761}
   - component: {fileID: 9216230041211507780}
+  - component: {fileID: 8121197479323562}
   m_Layer: 6
   m_Name: Tower1
-  m_TagString: Untagged
+  m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,11 +408,14 @@ MonoBehaviour:
   healthBar: {fileID: 7195399448863838936}
   healthBarObject: {fileID: 860695560454501341}
   rotatePoint: {fileID: 8665223855531679480}
+  towerLayer: 6
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
   projectilePrefab: {fileID: 4846766739089288063, guid: 34ca742dbd0a39f429f6bc0e0185f679, type: 3}
   projectileSpawnPoint: {fileID: 4016908940564182647}
+  cantPlaceCollider: {fileID: 8121197479323562}
+  spriteRenderer: {fileID: 1005495448324313900}
   baseHealth: 50
   healRate: 0.05
   rampUp: 0.001
@@ -424,6 +428,43 @@ MonoBehaviour:
   speed: 40
   isBase: 0
   towerPlot: {fileID: -9206448747655427126, guid: 0a46609e09605bd4389355f392173889, type: 3}
+  canPlace: 1
+  canAttack: 0
+--- !u!70 &8121197479323562
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655526142323918544}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03, y: 0.1}
+  m_Size: {x: 1.2, y: 1.6}
+  m_Direction: 0
 --- !u!1 &5282714408590629733
 GameObject:
   m_ObjectHideFlags: 0

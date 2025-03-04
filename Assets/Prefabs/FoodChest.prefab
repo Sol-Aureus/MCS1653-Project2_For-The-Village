@@ -451,11 +451,14 @@ MonoBehaviour:
   healthBar: {fileID: 2706093271744485111}
   healthBarObject: {fileID: 2491382907224162700}
   rotatePoint: {fileID: 319894064666374205}
+  towerLayer: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
   projectilePrefab: {fileID: 8826039370106297578}
   projectileSpawnPoint: {fileID: 319894064666374205}
+  cantPlaceCollider: {fileID: 0}
+  spriteRenderer: {fileID: 1005495448324313900}
   baseHealth: 1000
   healRate: 0.0001
   rampUp: 0.00000025
@@ -467,7 +470,8 @@ MonoBehaviour:
   pierce: 0
   speed: 0
   isBase: 1
-  towerPlot: {fileID: 0}
+  canPlace: 1
+  canAttack: 0
 --- !u!1 &4842054597197665283
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,9 +9,12 @@ public class Tower : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject healthBarObject;
     [SerializeField] private Transform rotatePoint;
+    [SerializeField] private int towerLayer;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private CapsuleCollider2D cantPlaceCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Attributes")]
     [SerializeField] private float baseHealth;
@@ -31,11 +34,13 @@ public class Tower : MonoBehaviour
     private float healCounter;
 
     private bool isDestroyed = false;
-    public Plots towerPlot;
 
     private Transform target;
     private float timeUntilFire = 0;
     private float targetDistance;
+
+    public bool canPlace = true;
+    public bool canAttack = false;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -44,11 +49,21 @@ public class Tower : MonoBehaviour
         currentHealRate = healRate;
         healCounter = 0;
         healthBar.UpdateHealthBar(Mathf.RoundToInt(health), baseHealth);
+        healthBarObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Stops the tower from doing any calculations while being placed
+        if (!canAttack)
+        {
+            gameObject.layer = default;
+            return;
+        }
+
+        gameObject.layer = towerLayer;
+
         FindTarget();
 
         // Counts the time until the next shot
@@ -120,8 +135,6 @@ public class Tower : MonoBehaviour
     // Deals damage to the enemy
     public void TakeDamage(float damage)
     {
-        Debug.Log("Tower took damage");
-
         // Updates the health
         health -= damage;
         healthBar.UpdateHealthBar(Mathf.RoundToInt(health), baseHealth);
@@ -130,12 +143,7 @@ public class Tower : MonoBehaviour
 
         if (health <= 0 && !isDestroyed)
         {
-            if (!isBase)
-            {
-                // Calls the event to notify the spawner that a tower has died
-                towerPlot.TowerDestroyed();
-            }
-            else
+            if (isBase)
             {
                 // Calls the event to end the game
                 Debug.Log("Called game over!");
@@ -145,13 +153,6 @@ public class Tower : MonoBehaviour
             isDestroyed = true;
             Destroy(gameObject);
         }
-    }
-
-
-    // Sets the plot the tower is on
-    public void SetPlot(Plots plot)
-    {
-        towerPlot = plot;
     }
 
     // Gets all the enemies in range and sets the closest one as the target
@@ -223,5 +224,25 @@ public class Tower : MonoBehaviour
     {
         Handles.color = Color.red;
         Handles.DrawWireDisc(rotatePoint.position, Vector3.forward, range);
+    }
+
+    // Detects when an object is colliding with it
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CantPlace") && !isBase)
+        {
+            spriteRenderer.color = Color.red;
+            canPlace = false;
+        }
+    }
+
+    // Detects when an object is colliding with it
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("CantPlace"))
+        {
+            spriteRenderer.color = Color.white;
+            canPlace = true;
+        }
     }
 }
