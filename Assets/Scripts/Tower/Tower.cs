@@ -64,29 +64,29 @@ public class Tower : MonoBehaviour
 
         gameObject.layer = towerLayer;
 
-        FindTarget();
-
         // Counts the time until the next shot
         timeUntilFire += Time.deltaTime;
-        
+
         // Counts down the timer
         healCounter -= Time.deltaTime;
 
-        // If there is a target, rotate towards it
-        if (target != null)
+        // Only checks for enemies when about to fire
+        if (timeUntilFire >= fireRate)
         {
-            RotateTowardsTarget();
+            FindTarget();
 
-            // Check if the target is in range
-            if (!CheckTargetInRange())
+            // If there is a target, rotate towards it
+            if (target != null)
             {
-                // Removing the target
-                target = null;
-            }
-            else
-            {
-                // Fires if the time until the next shot is greater than the fire rate
-                if (timeUntilFire >= fireRate)
+                RotateTowardsTarget();
+
+                // Check if the target is in range
+                if (!CheckTargetInRange())
+                {
+                    // Removing the target
+                    target = null;
+                }
+                else
                 {
                     Fire();
                     timeUntilFire = 0;

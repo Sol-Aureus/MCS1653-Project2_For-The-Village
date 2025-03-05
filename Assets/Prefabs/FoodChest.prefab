@@ -451,7 +451,7 @@ MonoBehaviour:
   healthBar: {fileID: 2706093271744485111}
   healthBarObject: {fileID: 2491382907224162700}
   rotatePoint: {fileID: 319894064666374205}
-  towerLayer: 0
+  towerLayer: 6
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -470,8 +470,8 @@ MonoBehaviour:
   pierce: 0
   speed: 0
   isBase: 1
-  canPlace: 1
-  canAttack: 0
+  canPlace: 0
+  canAttack: 1
 --- !u!1 &4842054597197665283
 GameObject:
   m_ObjectHideFlags: 0

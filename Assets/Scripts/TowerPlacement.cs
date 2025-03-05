@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Camera mainCamera;
-
-    [Header("Attributes")]
-    [SerializeField] private float placeRange;
-
     private GameObject currentPlacingTower;
     private Vector3 mouseWorldPos;
 
@@ -29,11 +23,14 @@ public class TowerPlacement : MonoBehaviour
             mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // Move the tower there
-            currentPlacingTower.transform.position = new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0);
+            currentPlacingTower.transform.position = new Vector3(mouseWorldPos.x, mouseWorldPos.y, -4);
 
             // If click
             if (Input.GetMouseButtonDown(0) && currentPlacingTower.GetComponent<Tower>().canPlace)
             {
+                // Sets the tower to the propper layer
+                currentPlacingTower.transform.position = new Vector3(mouseWorldPos.x, mouseWorldPos.y, 0);
+
                 // Allows the tower to attack
                 currentPlacingTower.GetComponent<Tower>().canAttack = true;
 

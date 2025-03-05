@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
     private Transform pathTarget;
     private Vector3 pathTargetPosition;
     private int pathIndex = 0;
+    private float pathTolerance = 0.2f;
 
     private float scaledHealth;
     private float health;
@@ -59,7 +60,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // Move towards the pathTarget
-        if (Vector2.Distance(transform.position, pathTargetPosition) < 0.1f)
+        if (Vector2.Distance(transform.position, pathTargetPosition) < pathTolerance)
         {
             // Change pathTarget
             pathIndex++;
@@ -80,32 +81,35 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        FindTarget();
-
         // Counts the time until the next shot
         timeUntilFire += Time.deltaTime;
 
-        // If there is a target, rotate towards it
-        if (target == null)
+        if (timeUntilFire >= fireRate)
         {
-            currentMoveSpeed = moveSpeed;
-        }
-        else
-        {
-            RotateTowardsTarget();
+            FindTarget();
 
-            // Check if the target is in range
-            if (!CheckTargetInRange())
+            // If there is a target, rotate towards it
+            if (target == null)
             {
-                // Removing the target
-                target = null;
+                currentMoveSpeed = moveSpeed;
             }
-            else if (timeUntilFire >= fireRate)
+            else
             {
-                // Fires if the time until the next shot is greater than the fire rate
-                currentMoveSpeed = 0;
-                Fire();
-                timeUntilFire = 0;
+                RotateTowardsTarget();
+
+                // Check if the target is in range
+                if (!CheckTargetInRange())
+                {
+                    // Removing the target
+                    target = null;
+                }
+                else
+                {
+                    // Fires if the time until the next shot is greater than the fire rate
+                    currentMoveSpeed = 0;
+                    Fire();
+                    timeUntilFire = 0;
+                }
             }
         }
 
