@@ -139,6 +139,7 @@ public class Enemy : MonoBehaviour
         // Updates the health
         health -= damage;
         healthBar.UpdateHealthBar(Mathf.RoundToInt(health), scaledHealth);
+        LevelManager.instance.IncreaseCurrency((int)damage);
 
         if (health <= 0 && !isDestroyed)
         {

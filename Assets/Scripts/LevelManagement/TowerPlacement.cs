@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Menu menuToggle;
+
     private GameObject currentPlacingTower;
     private Vector3 mouseWorldPos;
 
@@ -36,6 +39,7 @@ public class TowerPlacement : MonoBehaviour
 
                 // Place tower
                 currentPlacingTower = null;
+                menuToggle.ToggleMenu();
             }
         }
     }
@@ -43,6 +47,14 @@ public class TowerPlacement : MonoBehaviour
     // Sets the tower that will be placed
     public void SetTowerToPlace(GameObject tower)
     {
-        currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
+        if (LevelManager.instance.SpendCurrency(150))
+        {
+            menuToggle.ToggleMenu();
+            currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Not enough");
+        }
     }
 }
