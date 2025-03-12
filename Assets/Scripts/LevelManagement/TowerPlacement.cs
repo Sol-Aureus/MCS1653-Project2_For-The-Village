@@ -47,10 +47,23 @@ public class TowerPlacement : MonoBehaviour
     // Sets the tower that will be placed
     public void SetTowerToPlace(GameObject tower)
     {
-        if (LevelManager.instance.SpendCurrency(150))
+        // Checks which tower to place
+        if (tower.name == "Tower1")
         {
-            menuToggle.ToggleMenu();
-            currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
+            // Checks if you have enough
+            if (LevelManager.instance.SpendCurrency(250))
+            {
+                menuToggle.ToggleMenu();
+                currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
+            }
+        }
+        else if (tower.name == "Tower2")
+        {
+            if (LevelManager.instance.SpendCurrency(200))
+            {
+                menuToggle.ToggleMenu();
+                currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
+            }
         }
         else
         {

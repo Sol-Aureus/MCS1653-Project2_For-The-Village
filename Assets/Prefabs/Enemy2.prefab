@@ -216,7 +216,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -612122513, guid: d5a20182cb5851649bd65c7b7c00ee61, type: 3}
+  m_Sprite: {fileID: -875671001, guid: 012b817d31af30c4ca8f6d276c1bc958, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: -8867615265496258497}
   - component: {fileID: 329457596856809354}
   m_Layer: 3
-  m_Name: Enemy1
+  m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,9 +770,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: 0.15}
-  m_Size: {x: 0.75, y: 1.25}
-  m_Direction: 0
+  m_Offset: {x: -0.06, y: -0.06}
+  m_Size: {x: 1, y: 0.75}
+  m_Direction: 1
 --- !u!114 &329457596856809354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,14 +791,14 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  projectilePrefab: {fileID: 4846766739089288063, guid: 874e40ed5bb218749987dff058c99048, type: 3}
+  projectilePrefab: {fileID: 4846766739089288063, guid: 1763c8688e6c1854b829976bcb2c4d5d, type: 3}
   projectileSpawnPoint: {fileID: 4540713534982367698}
-  moveSpeed: 4
+  moveSpeed: 8
   pathOffset: 0.5
-  baseHealth: 10
-  range: 8
-  fireRate: 0.4
-  damage: 1
-  pierce: 1
+  baseHealth: 8
+  range: 2
+  fireRate: 0.5
+  damage: 2
+  pierce: 999
   speed: 30
-  lifeTime: 1.2
+  lifeTime: 1

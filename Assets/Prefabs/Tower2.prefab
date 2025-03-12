@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: -7219234640500316761}
   - component: {fileID: 9216230041211507780}
   m_Layer: 6
-  m_Name: Tower1
+  m_Name: Tower2
   m_TagString: CantPlace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,20 +411,20 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  projectilePrefab: {fileID: 4846766739089288063, guid: 34ca742dbd0a39f429f6bc0e0185f679, type: 3}
+  projectilePrefab: {fileID: 4846766739089288063, guid: 803652600e4dc3643bcdeeffd0650d6f, type: 3}
   projectileSpawnPoint: {fileID: 4016908940564182647}
   cantPlaceCollider: {fileID: -7219234640500316761}
   spriteRenderer: {fileID: 1005495448324313900}
-  baseHealth: 50
-  healRate: 0.025
+  baseHealth: 100
+  healRate: 0.05
   rampUp: 0.001
-  maxRampUp: 2
-  range: 10
-  lifeTime: 1.2
-  fireRate: 0.3
-  damage: 5
-  pierce: 1
-  speed: 60
+  maxRampUp: 2.5
+  range: 3
+  lifeTime: 1
+  fireRate: 0.5
+  damage: 10
+  pierce: 999
+  speed: 50
   isBase: 0
   canPlace: 1
   canAttack: 0

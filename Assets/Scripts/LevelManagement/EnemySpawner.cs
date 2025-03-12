@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnRate;
     [SerializeField] private float timeBetweenWaves;
     [SerializeField] private float difficultyScaling;
+    [SerializeField] private int baseMoney;
+    [SerializeField] private float moneyScaling;
 
     [Header("Events")]
     public static UnityEvent onEnemyDeath = new UnityEvent();
@@ -23,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
     private int enemiesAlive;
     private int enemiesToSpawn;
     private bool isSpawning = false;
+    private int increment = 0;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -94,8 +97,25 @@ public class EnemySpawner : MonoBehaviour
     // Spawns an enemy
     private void SpawnEnemy()
     {
-        // Spawns a random enemy prefab at the first point
-        GameObject prefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+        GameObject prefabToSpawn;
+        if (currentWave == 1)
+        {
+            prefabToSpawn = enemyPrefabs[1];
+        }
+        else if (currentWave == 2) 
+        {
+            increment++;
+            prefabToSpawn = enemyPrefabs[1];
+            if (increment >= EnemiesPerWave() - 1) 
+            {
+                prefabToSpawn = enemyPrefabs[0];
+            }
+        }
+        else
+        {
+            // Spawns a random enemy prefab at the first point
+            prefabToSpawn = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+        }
         GameObject prefabSpawned = Instantiate(prefabToSpawn, LevelManager.instance.points[0].position, Quaternion.identity); // Quaternion.identity means no rotation
         prefabSpawned.GetComponent<Enemy>().UpdateHealth(Mathf.Pow(currentWave, difficultyScaling));
     }
@@ -111,6 +131,7 @@ public class EnemySpawner : MonoBehaviour
         // Resets the variables
         isSpawning = false;
         timeToSpawn = 0;
+        LevelManager.instance.IncreaseCurrency(Mathf.RoundToInt(baseMoney * Mathf.Pow(currentWave, moneyScaling)));
 
         // Increases the wave number and starts the next wave
         currentWave++;

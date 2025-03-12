@@ -139,11 +139,11 @@ public class Enemy : MonoBehaviour
         // Updates the health
         health -= damage;
         healthBar.UpdateHealthBar(Mathf.RoundToInt(health), scaledHealth);
-        LevelManager.instance.IncreaseCurrency((int)damage);
 
         if (health <= 0 && !isDestroyed)
         {
             // Calls the event to notify the spawner that an enemy has died
+            LevelManager.instance.IncreaseCurrency((int)Mathf.Pow(scaledHealth, 0.8f));
             EnemySpawner.onEnemyDeath.Invoke();
             isDestroyed = true;
             Destroy(gameObject);
