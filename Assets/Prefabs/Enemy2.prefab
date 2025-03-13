@@ -566,7 +566,7 @@ Transform:
   m_GameObject: {fileID: 6970620772891393404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -684,7 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3802473532105305905}
   - component: {fileID: 393757120044445171}
-  - component: {fileID: -8867615265496258497}
+  - component: {fileID: 4663743789995871084}
   - component: {fileID: 329457596856809354}
   m_Layer: 3
   m_Name: Enemy2
@@ -738,8 +738,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!70 &-8867615265496258497
-CapsuleCollider2D:
+--- !u!58 &4663743789995871084
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -767,12 +767,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.06, y: -0.06}
-  m_Size: {x: 1, y: 0.75}
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!114 &329457596856809354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,4 +801,4 @@ MonoBehaviour:
   damage: 2
   pierce: 999
   speed: 30
-  lifeTime: 1
+  lifeTime: 0.6

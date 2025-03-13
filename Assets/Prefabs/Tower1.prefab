@@ -303,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7806190770743117829}
   - component: {fileID: 8371764402033187043}
-  - component: {fileID: -7219234640500316761}
+  - component: {fileID: 827430080087864128}
   - component: {fileID: 9216230041211507780}
   m_Layer: 6
   m_Name: Tower1
@@ -357,8 +357,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!70 &-7219234640500316761
-CapsuleCollider2D:
+--- !u!58 &827430080087864128
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -386,12 +386,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03, y: -0.1}
-  m_Size: {x: 1, y: 1.15}
-  m_Direction: 0
+  m_Offset: {x: -0.03, y: -0.2}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &9216230041211507780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
     m_Bits: 8
   projectilePrefab: {fileID: 4846766739089288063, guid: 34ca742dbd0a39f429f6bc0e0185f679, type: 3}
   projectileSpawnPoint: {fileID: 4016908940564182647}
-  cantPlaceCollider: {fileID: -7219234640500316761}
+  cantPlaceCollider: {fileID: 827430080087864128}
   spriteRenderer: {fileID: 1005495448324313900}
   baseHealth: 50
   healRate: 0.025
@@ -422,9 +422,9 @@ MonoBehaviour:
   range: 10
   lifeTime: 1.2
   fireRate: 0.3
-  damage: 5
-  pierce: 1
-  speed: 60
+  damage: 3
+  pierce: 0
+  speed: 50
   isBase: 0
   canPlace: 1
   canAttack: 0

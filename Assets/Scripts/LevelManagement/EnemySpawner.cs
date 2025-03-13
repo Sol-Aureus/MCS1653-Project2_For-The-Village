@@ -7,6 +7,11 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private GameObject[] wave1;
+    [SerializeField] private GameObject[] wave2;
+    [SerializeField] private GameObject[] wave3;
+    [SerializeField] private GameObject[] wave4;
+    [SerializeField] private GameObject[] wave5;
 
     [Header("Atributes")]
     [SerializeField] private int baseEnemies;
@@ -72,7 +77,30 @@ public class EnemySpawner : MonoBehaviour
     private int EnemiesPerWave()
     {
         // Sets the number of enemies to spawn based on the current wave
-        return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScaling));
+        if (currentWave == 1)
+        {
+            return wave1.Length;
+        }
+        else if (currentWave == 2)
+        {
+            return wave2.Length;
+        }
+        else if (currentWave == 3)
+        {
+            return wave3.Length;
+        }
+        else if (currentWave == 4)
+        {
+            return wave4.Length;
+        }
+        else if (currentWave == 5)
+        {
+            return wave5.Length;
+        }
+        else
+        {
+            return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScaling));
+        }
     }
 
     // Determines the spawn rate based on the number of enemies to spawn
@@ -100,16 +128,28 @@ public class EnemySpawner : MonoBehaviour
         GameObject prefabToSpawn;
         if (currentWave == 1)
         {
-            prefabToSpawn = enemyPrefabs[1];
-        }
-        else if (currentWave == 2) 
-        {
+            prefabToSpawn = wave1[increment];
             increment++;
-            prefabToSpawn = enemyPrefabs[1];
-            if (increment >= EnemiesPerWave() - 1) 
-            {
-                prefabToSpawn = enemyPrefabs[0];
-            }
+        }
+        else if (currentWave == 2)
+        {
+            prefabToSpawn = wave2[increment];
+            increment++;
+        }
+        else if (currentWave == 3)
+        {
+            prefabToSpawn = wave3[increment];
+            increment++;
+        }
+        else if (currentWave == 4)
+        {
+            prefabToSpawn = wave4[increment];
+            increment++;
+        }
+        else if (currentWave == 5)
+        {
+            prefabToSpawn = wave5[increment];
+            increment++;
         }
         else
         {
@@ -135,6 +175,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Increases the wave number and starts the next wave
         currentWave++;
+        increment = 0;
         StartCoroutine(StartWave());
     }
 }

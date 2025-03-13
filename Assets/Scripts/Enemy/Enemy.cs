@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
         }
 
 
-        if (health == baseHealth)
+        if (health == scaledHealth)
         {
             healthBarObject.SetActive(false);
         }

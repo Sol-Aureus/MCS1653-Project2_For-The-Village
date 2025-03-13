@@ -13,7 +13,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint;
-    [SerializeField] private CapsuleCollider2D cantPlaceCollider;
+    [SerializeField] private CircleCollider2D cantPlaceCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("Attributes")]
