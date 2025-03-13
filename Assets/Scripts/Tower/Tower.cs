@@ -146,7 +146,7 @@ public class Tower : MonoBehaviour
             if (isBase)
             {
                 // Calls the event to end the game
-                Debug.Log("Called game over!");
+                LevelManager.instance.Die();
             }
 
             // Destroys the object

@@ -34,6 +34,6 @@ public class Menu : MonoBehaviour
     // Runs the script to change the GUI
     private void OnGUI()
     {
-        currencyUI.text = "Shop - $" + LevelManager.instance.currency.ToString();
+        currencyUI.text = "$" + LevelManager.instance.currency.ToString();
     }
 }
