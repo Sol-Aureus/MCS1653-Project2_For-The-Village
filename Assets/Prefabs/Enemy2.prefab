@@ -795,7 +795,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 4540713534982367698}
   moveSpeed: 8
   pathOffset: 0.5
-  baseHealth: 8
+  baseHealth: 12
   range: 2
   fireRate: 0.5
   damage: 2

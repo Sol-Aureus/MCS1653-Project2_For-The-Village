@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private TextMeshProUGUI waveUI;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private GameObject[] wave1;
     [SerializeField] private GameObject[] wave2;
     [SerializeField] private GameObject[] wave3;
     [SerializeField] private GameObject[] wave4;
     [SerializeField] private GameObject[] wave5;
+    [SerializeField] private GameObject[] wave6;
+    [SerializeField] private GameObject[] wave7;
+    [SerializeField] private GameObject[] wave8;
+    [SerializeField] private GameObject[] wave9;
+    [SerializeField] private GameObject[] wave10;
+    [SerializeField] private GameObject[] wave15;
 
     [Header("Atributes")]
     [SerializeField] private int baseEnemies;
@@ -25,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     public static UnityEvent onEnemyDeath = new UnityEvent();
 
     private float currentSpawnRate;
-    private int currentWave = 1;
+    public int currentWave = 1;
     private float timeToSpawn = 0;
     private int enemiesAlive;
     private int enemiesToSpawn;
@@ -97,6 +105,26 @@ public class EnemySpawner : MonoBehaviour
         {
             return wave5.Length;
         }
+        else if (currentWave == 6)
+        {
+            return wave6.Length;
+        }
+        else if (currentWave == 7)
+        {
+            return wave7.Length;
+        }
+        else if (currentWave == 9)
+        {
+            return wave9.Length;
+        }
+        else if (currentWave == 10)
+        {
+            return wave10.Length;
+        }
+        else if (currentWave == 15)
+        {
+            return wave15.Length;
+        }
         else
         {
             return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScaling));
@@ -151,6 +179,35 @@ public class EnemySpawner : MonoBehaviour
             prefabToSpawn = wave5[increment];
             increment++;
         }
+        else if (currentWave == 6)
+        {
+            prefabToSpawn = wave6[increment];
+            increment++;
+        }
+        else if (currentWave == 7)
+        {
+            prefabToSpawn = wave7[increment];
+            increment++;
+        }
+        else if (currentWave == 8)
+        {
+            prefabToSpawn = wave8[increment];
+        }
+        else if (currentWave == 9)
+        {
+            prefabToSpawn = wave9[increment];
+            increment++;
+        }
+        else if (currentWave == 10)
+        {
+            prefabToSpawn = wave10[increment];
+            increment++;
+        }
+        else if (currentWave == 15)
+        {
+            prefabToSpawn = wave15[increment];
+            increment++;
+        }
         else
         {
             // Spawns a random enemy prefab at the first point
@@ -172,10 +229,21 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
         timeToSpawn = 0;
         LevelManager.instance.IncreaseCurrency(Mathf.RoundToInt(baseMoney * Mathf.Pow(currentWave, moneyScaling)));
+        
+        if (currentWave == 15)
+        {
+            LevelManager.instance.Win();
+        }
 
         // Increases the wave number and starts the next wave
         currentWave++;
         increment = 0;
         StartCoroutine(StartWave());
+    }
+
+    // Runs the script to change the GUI
+    private void OnGUI()
+    {
+        waveUI.text = "Wave: " + currentWave;
     }
 }

@@ -19,18 +19,6 @@ public class Menu : MonoBehaviour
         anim.SetBool("MenuOpen", isMenuOpen);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // Runs the script to change the GUI
     private void OnGUI()
     {
