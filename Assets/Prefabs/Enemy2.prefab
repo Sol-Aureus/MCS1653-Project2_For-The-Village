@@ -796,9 +796,11 @@ MonoBehaviour:
   moveSpeed: 8
   pathOffset: 0.5
   baseHealth: 12
-  range: 2
-  fireRate: 0.5
-  damage: 2
+  range: 3
+  fireRate: 0.8
+  damage: 3
   pierce: 999
   speed: 30
-  lifeTime: 0.6
+  lifeTime: 0.8
+  health: 0
+  distanceTraveled: 0

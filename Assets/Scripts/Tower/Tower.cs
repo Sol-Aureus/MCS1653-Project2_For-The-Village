@@ -364,18 +364,28 @@ public class Tower : MonoBehaviour
         }
     }
 
+    // Runs when a collider is clicked
     private void OnMouseDown()
     {
         targetingObject.SetActive(true);
     }
 
+    // Allows the tower to change targeting
     public void ChangeTargeting(int newTargeting)
     {
         targetingType = newTargeting;
     }
 
+    // Closes the tower menu
     public void Close()
     {
         targetingObject.SetActive(false);
+    }
+
+    // Sells the tower
+    public void Sell(int price)
+    {
+        LevelManager.instance.IncreaseCurrency(price);
+        Destroy(gameObject);
     }
 }
