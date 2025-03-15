@@ -32,12 +32,13 @@ public class Enemy : MonoBehaviour
     private float pathTolerance = 0.2f;
 
     private float scaledHealth;
-    private float health;
+    public float health;
     private bool isDestroyed = false;
 
     private Transform target;
     private float timeUntilFire = 0;
     private float targetDistance;
+    public float distanceTraveled = 0;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -131,6 +132,7 @@ public class Enemy : MonoBehaviour
         Vector2 direction = (pathTargetPosition - transform.position).normalized; // Get the direction to the pathTarget between 0 and 1
 
         rb.velocity = direction * currentMoveSpeed;
+        distanceTraveled += currentMoveSpeed;
     }
 
     // Deals damage to the enemy

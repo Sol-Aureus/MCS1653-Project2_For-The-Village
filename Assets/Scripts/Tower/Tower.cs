@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Tower : MonoBehaviour
     [Header("References")]
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private GameObject healthBarObject;
+    [SerializeField] private GameObject targetingObject;
     [SerializeField] private Transform rotatePoint;
     [SerializeField] private int towerLayer;
     [SerializeField] private LayerMask enemyLayer;
@@ -15,6 +17,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField] private CircleCollider2D cantPlaceCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private EnemySpawner spawner;
 
     [Header("Attributes")]
     [SerializeField] private float baseHealth;
@@ -38,9 +41,13 @@ public class Tower : MonoBehaviour
     private Transform target;
     private float timeUntilFire = 0;
     private float targetDistance;
+    private float targetDistanceTraveled;
+    private float targetHealth;
 
     public bool canPlace = true;
     public bool canAttack = false;
+
+    private int targetingType = 0;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -146,7 +153,7 @@ public class Tower : MonoBehaviour
             if (isBase)
             {
                 // Calls the event to end the game
-                LevelManager.instance.Die();
+                LevelManager.instance.Die(spawner.currentWave);
             }
 
             // Destroys the object
@@ -166,22 +173,133 @@ public class Tower : MonoBehaviour
         {
             target = null;
 
-            // Check if there are closer enemies
-            foreach (RaycastHit2D hit in hits)
+            if (targetingType == 0)
             {
-                if (target == null)
+                // Check if there are farther along enemies
+                foreach (RaycastHit2D hit in hits)
                 {
-                    // Set the first enemy to enter the range as the target
-                    target = hits[0].transform;
-                    targetDistance = Vector2.Distance(rotatePoint.position, target.position);
-                    continue;
-                }
+                    if (target == null)
+                    {
+                        // Set the first enemy to enter the range as the target
+                        target = hits[0].transform;
+                        targetDistanceTraveled = target.GetComponent<Enemy>().distanceTraveled;
+                        continue;
+                    }
 
-                if (Vector2.Distance(rotatePoint.position, hit.transform.position) < targetDistance)
-                {
-                    target = hit.transform;
-                    targetDistance = Vector2.Distance(rotatePoint.position, target.position);
+                    Transform temporaryTarget = hit.transform;
+                    if (temporaryTarget.GetComponent<Enemy>().distanceTraveled > targetDistanceTraveled)
+                    {
+                        target = hit.transform;
+                        targetDistanceTraveled = target.GetComponent<Enemy>().distanceTraveled;
+                    }
                 }
+            }
+            else if (targetingType == 1)
+            {
+                // Check if there are farther along enemies
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (target == null)
+                    {
+                        // Set the first enemy to enter the range as the target
+                        target = hits[0].transform;
+                        targetDistanceTraveled = target.GetComponent<Enemy>().distanceTraveled;
+                        continue;
+                    }
+
+                    Transform temporaryTarget = hit.transform;
+                    if (temporaryTarget.GetComponent<Enemy>().distanceTraveled < targetDistanceTraveled)
+                    {
+                        target = hit.transform;
+                        targetDistanceTraveled = target.GetComponent<Enemy>().distanceTraveled;
+                    }
+                }
+            }
+            else if (targetingType == 2)
+            {
+                // Check if there are farther along enemies
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (target == null)
+                    {
+                        // Set the first enemy to enter the range as the target
+                        target = hits[0].transform;
+                        targetHealth = target.GetComponent<Enemy>().health;
+                        continue;
+                    }
+
+                    Transform temporaryTarget = hit.transform;
+                    if (temporaryTarget.GetComponent<Enemy>().health > targetHealth)
+                    {
+                        target = hit.transform;
+                        targetHealth = target.GetComponent<Enemy>().health;
+                    }
+                }
+            }
+            else if (targetingType == 3)
+            {
+                // Check if there are farther along enemies
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (target == null)
+                    {
+                        // Set the first enemy to enter the range as the target
+                        target = hits[0].transform;
+                        targetHealth = target.GetComponent<Enemy>().health;
+                        continue;
+                    }
+
+                    Transform temporaryTarget = hit.transform;
+                    if (temporaryTarget.GetComponent<Enemy>().health < targetHealth)
+                    {
+                        target = hit.transform;
+                        targetHealth = target.GetComponent<Enemy>().health;
+                    }
+                }
+            }
+            else if (targetingType == 4)
+            {
+                // Check if there are closer enemies
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (target == null)
+                    {
+                        // Set the first enemy to enter the range as the target
+                        target = hits[0].transform;
+                        targetDistance = Vector2.Distance(rotatePoint.position, target.position);
+                        continue;
+                    }
+
+                    if (Vector2.Distance(rotatePoint.position, hit.transform.position) < targetDistance)
+                    {
+                        target = hit.transform;
+                        targetDistance = Vector2.Distance(rotatePoint.position, target.position);
+                    }
+                }
+            }
+            else if (targetingType == 5)
+            {
+                // Check if there are closer enemies
+                foreach (RaycastHit2D hit in hits)
+                {
+                    if (target == null)
+                    {
+                        // Set the first enemy to enter the range as the target
+                        target = hits[0].transform;
+                        targetDistance = Vector2.Distance(rotatePoint.position, target.position);
+                        continue;
+                    }
+
+                    if (Vector2.Distance(rotatePoint.position, hit.transform.position) > targetDistance)
+                    {
+                        target = hit.transform;
+                        targetDistance = Vector2.Distance(rotatePoint.position, target.position);
+                    }
+                }
+            }
+            else if (targetingType == 6)
+            {
+                target = hits[Random.Range(0, hits.Length)].transform;
             }
         }
     }
@@ -244,5 +362,20 @@ public class Tower : MonoBehaviour
             spriteRenderer.color = Color.white;
             canPlace = true;
         }
+    }
+
+    private void OnMouseDown()
+    {
+        targetingObject.SetActive(true);
+    }
+
+    public void ChangeTargeting(int newTargeting)
+    {
+        targetingType = newTargeting;
+    }
+
+    public void Close()
+    {
+        targetingObject.SetActive(false);
     }
 }

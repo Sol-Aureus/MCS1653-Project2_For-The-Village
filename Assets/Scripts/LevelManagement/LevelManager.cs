@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
     [Header("Menus")]
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject deathMenu;
-    [SerializeField] GameObject freeplayMenu;
-    [SerializeField] GameObject winMenu;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject deathMenu;
+    [SerializeField] private TextMeshProUGUI deathText;
+    [SerializeField] private GameObject winMenu;
 
     [Header("Path")]
     public Transform[] points;
@@ -64,10 +65,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void Die()
+    public void Die(int waves)
     {
         otherMenu = true;
         deathMenu.SetActive(true);
+        deathText.text = "You Died!\n\nWaves Completed: " + waves;
         Time.timeScale = 0;
     }
 
@@ -91,6 +93,13 @@ public class LevelManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    public void Continue()
+    {
+        otherMenu = false;
+        Time.timeScale = 1;
+        winMenu.SetActive(false);
     }
 
     public void Home()
