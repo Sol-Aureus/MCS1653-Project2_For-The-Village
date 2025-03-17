@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     private Transform pathTarget;
     private Vector3 pathTargetPosition;
     private int pathIndex = 0;
-    private float pathTolerance = 0.2f;
+    private float pathTolerance = 0.05f;
 
     private float scaledHealth;
     public float health;
@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // Move towards the pathTarget
-        if (Vector2.Distance(transform.position, pathTargetPosition) < pathTolerance)
+        if (Vector2.Distance(transform.position, pathTargetPosition) < pathTolerance * moveSpeed)
         {
             // Change pathTarget
             pathIndex++;
