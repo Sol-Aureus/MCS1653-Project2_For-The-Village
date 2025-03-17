@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Tower : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private CircleCollider2D cantPlaceCollider;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private EnemySpawner spawner;
+    [SerializeField] private Animator animator;
 
     [Header("Attributes")]
     [SerializeField] private float baseHealth;
@@ -86,13 +89,20 @@ public class Tower : MonoBehaviour
             // If there is a target, rotate towards it
             if (target != null)
             {
+                animator.SetBool("IsAttacking", true);
                 RotateTowardsTarget();
+
+                // Get a way to play the correct animation ##################################################################
+                animator.Play("tower1_attack_down");
+                float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
+                Debug.Log(clipLength);
 
                 // Check if the target is in range
                 if (!CheckTargetInRange())
                 {
                     // Removing the target
                     target = null;
+                    animator.SetBool("IsAttacking", false);
                 }
                 else
                 {
@@ -310,6 +320,16 @@ public class Tower : MonoBehaviour
     {
         // Get the angle between the target and the tower
         float angle = Mathf.Atan2(target.position.y - rotatePoint.position.y, target.position.x - rotatePoint.position.x) * Mathf.Rad2Deg;
+        if (angle < 90 && angle > -90)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (angle > 90 || angle < -90)
+        {
+            spriteRenderer.flipX = true;
+        }
+        animator.SetFloat("Angle", angle);
+        Debug.Log(angle);
 
         // Rotate the tower towards the target
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
