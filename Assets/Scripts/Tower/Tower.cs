@@ -31,6 +31,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private float pierce;
     [SerializeField] private float speed;
     [SerializeField] private bool isBase;
+    [SerializeField] private AudioClip[] soundFX;
 
     private float health;
     private float currentHealRate;

@@ -450,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2706093271744485111}
   healthBarObject: {fileID: 2491382907224162700}
+  targetingObject: {fileID: 0}
   rotatePoint: {fileID: 319894064666374205}
   towerLayer: 6
   enemyLayer:
@@ -459,7 +460,8 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 319894064666374205}
   cantPlaceCollider: {fileID: 0}
   spriteRenderer: {fileID: 1005495448324313900}
-  baseHealth: 1000
+  spawner: {fileID: 0}
+  baseHealth: 600
   healRate: 0.0001
   rampUp: 0.00000025
   maxRampUp: 1.6
@@ -612,7 +614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000/1000
+  m_text: 600/600
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
