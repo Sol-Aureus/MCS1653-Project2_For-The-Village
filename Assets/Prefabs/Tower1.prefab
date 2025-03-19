@@ -1264,7 +1264,9 @@ MonoBehaviour:
   pierce: 0
   speed: 50
   isBase: 0
-  soundFX: []
+  soundFX:
+  - {fileID: 8300000, guid: 61d6bd80ebe4c9047906a6d7df28dabd, type: 3}
+  - {fileID: 8300000, guid: 07f38ca55dc8e494c99de451f0afdc79, type: 3}
   canPlace: 1
   canAttack: 0
 --- !u!95 &1714582316975603380

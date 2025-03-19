@@ -89,20 +89,13 @@ public class Tower : MonoBehaviour
             // If there is a target, rotate towards it
             if (target != null)
             {
-                animator.SetBool("IsAttacking", true);
                 RotateTowardsTarget();
-
-                // Get a way to play the correct animation ##################################################################
-                animator.Play("tower1_attack_down");
-                float clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
-                Debug.Log(clipLength);
 
                 // Check if the target is in range
                 if (!CheckTargetInRange())
                 {
                     // Removing the target
                     target = null;
-                    animator.SetBool("IsAttacking", false);
                 }
                 else
                 {
@@ -168,6 +161,7 @@ public class Tower : MonoBehaviour
             }
 
             // Destroys the object
+            SoundFX.instance.PlaySound(soundFX[1], transform, 1);
             isDestroyed = true;
             Destroy(gameObject);
         }
@@ -345,6 +339,9 @@ public class Tower : MonoBehaviour
     // Fires a projectile at the target
     private void Fire()
     {
+        // Plays the sound effect
+        SoundFX.instance.PlaySound(soundFX[0], transform, 0.8f);
+
         // Instantiates a projectile at the spawn point
         GameObject projectileObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
 

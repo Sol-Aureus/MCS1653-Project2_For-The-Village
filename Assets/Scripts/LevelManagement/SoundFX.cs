@@ -36,6 +36,9 @@ public class SoundFX : MonoBehaviour
 
         // Get length of audio clip
         float clipLength = audioSource.clip.length;
+
+        // Destroy the audio source after the clip has finished playing
+        Destroy(audioSource.gameObject, clipLength);
     }
 
     // Play random sound effect
@@ -58,5 +61,8 @@ public class SoundFX : MonoBehaviour
 
         // Get length of audio clip
         float clipLength = audioSource.clip.length;
+
+        // Destroy the audio source after the clip has finished playing
+        Destroy(audioSource.gameObject, clipLength);
     }
 }

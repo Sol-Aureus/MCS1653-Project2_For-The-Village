@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float pierce;
     [SerializeField] private float speed;
     [SerializeField] private float lifeTime;
+    [SerializeField] private AudioClip[] soundFX;
 
     private float currentMoveSpeed;
     private Transform pathTarget;
@@ -147,6 +148,7 @@ public class Enemy : MonoBehaviour
             // Calls the event to notify the spawner that an enemy has died
             LevelManager.instance.IncreaseCurrency((int)Mathf.Pow(scaledHealth, 0.8f));
             EnemySpawner.onEnemyDeath.Invoke();
+            SoundFX.instance.PlaySound(soundFX[1], transform, 0.6f);
             isDestroyed = true;
             Destroy(gameObject);
         }
@@ -210,6 +212,9 @@ public class Enemy : MonoBehaviour
     // Fires a projectile at the target
     private void Fire()
     {
+        // Plays the sound effect
+        SoundFX.instance.PlaySound(soundFX[0], transform, 0.8f);
+
         // Instantiates a projectile at the spawn point
         GameObject projectileObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
 

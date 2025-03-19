@@ -461,6 +461,7 @@ MonoBehaviour:
   cantPlaceCollider: {fileID: 0}
   spriteRenderer: {fileID: 1005495448324313900}
   spawner: {fileID: 0}
+  animator: {fileID: 0}
   baseHealth: 600
   healRate: 0.0001
   rampUp: 0.00000025
@@ -472,6 +473,9 @@ MonoBehaviour:
   pierce: 0
   speed: 0
   isBase: 1
+  soundFX:
+  - {fileID: 8300000, guid: 61d6bd80ebe4c9047906a6d7df28dabd, type: 3}
+  - {fileID: 8300000, guid: 07f38ca55dc8e494c99de451f0afdc79, type: 3}
   canPlace: 0
   canAttack: 1
 --- !u!1 &4842054597197665283

@@ -802,5 +802,8 @@ MonoBehaviour:
   pierce: 999
   speed: 30
   lifeTime: 0.8
+  soundFX:
+  - {fileID: 8300000, guid: a6236e5ce55e4254891afc4a17ca2bd8, type: 3}
+  - {fileID: 8300000, guid: 07f38ca55dc8e494c99de451f0afdc79, type: 3}
   health: 0
   distanceTraveled: 0
