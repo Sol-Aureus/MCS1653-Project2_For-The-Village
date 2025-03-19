@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Tower : MonoBehaviour
 {
@@ -353,13 +350,6 @@ public class Tower : MonoBehaviour
         projectileScript.SetSpeed(speed);
         projectileScript.SetlifeTime(range * lifeTime);
         projectileScript.SetRotation(rotatePoint.rotation);
-    }
-
-    // Draws the range of the tower
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(rotatePoint.position, Vector3.forward, range);
     }
 
     // Detects when an object is colliding with it

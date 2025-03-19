@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -226,12 +225,5 @@ public class Enemy : MonoBehaviour
         projectileScript.SetSpeed(speed);
         projectileScript.SetlifeTime(range * lifeTime);
         projectileScript.SetRotation(rotatePoint.rotation);
-    }
-
-    // Draws the range of the tower
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(rotatePoint.position, Vector3.forward, range);
     }
 }
