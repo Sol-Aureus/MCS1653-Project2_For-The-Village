@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Menu menuToggle;
+    [SerializeField] private TextMeshProUGUI cashText;
 
     private GameObject currentPlacingTower;
     private Vector3 mouseWorldPos;
+    private float redFlashTime = 0;
 
     // Update is called once per frame
     void Update()
@@ -36,6 +39,13 @@ public class TowerPlacement : MonoBehaviour
                 menuToggle.ToggleMenu();
             }
         }
+
+        // Flashes the cash red to show you can't afford it
+        redFlashTime -= Time.deltaTime;
+        if (redFlashTime <= 0)
+        {
+            cashText.color = new Color(255, 255, 0, 255);
+        }
     }
 
     // Sets the tower that will be placed
@@ -45,23 +55,29 @@ public class TowerPlacement : MonoBehaviour
         if (tower.name == "Tower1")
         {
             // Checks if you have enough
-            if (LevelManager.instance.SpendCurrency(250))
+            if (LevelManager.instance.SpendCurrency(tower.GetComponent<Tower>().price))
             {
                 menuToggle.ToggleMenu();
                 currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
+            }
+            else
+            {
+                cashText.color = new Color(255, 0, 0, 255);
+                redFlashTime = 0.5f;
             }
         }
         else if (tower.name == "Tower2")
         {
-            if (LevelManager.instance.SpendCurrency(200))
+            if (LevelManager.instance.SpendCurrency(tower.GetComponent<Tower>().price))
             {
                 menuToggle.ToggleMenu();
                 currentPlacingTower = Instantiate(tower, Vector2.zero, Quaternion.identity);
             }
-        }
-        else
-        {
-            Debug.Log("Not enough");
+            else
+            {
+                cashText.color = new Color(255, 0, 0, 255);
+                redFlashTime = 0.5f;
+            }
         }
     }
 }

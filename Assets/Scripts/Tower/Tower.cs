@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -18,6 +20,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private EnemySpawner spawner;
     [SerializeField] private Animator animator;
+    [SerializeField] private TextMeshProUGUI sellText;
 
     [Header("Attributes")]
     [SerializeField] private float baseHealth;
@@ -30,6 +33,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float pierce;
     [SerializeField] private float speed;
+    [SerializeField] public int price;
     [SerializeField] private bool isBase;
     [SerializeField] private AudioClip[] soundFX;
 
@@ -49,6 +53,8 @@ public class Tower : MonoBehaviour
     public bool canAttack = false;
 
     private int targetingType = 0;
+    public bool delete = false;
+    public float countDown = 0;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
@@ -58,11 +64,16 @@ public class Tower : MonoBehaviour
         healCounter = 0;
         healthBar.UpdateHealthBar(Mathf.RoundToInt(health), baseHealth);
         healthBarObject.SetActive(false);
+        if (!isBase)
+        {
+            LevelManager.instance.allTowers.Add(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        countDown -= Time.deltaTime;
         // Stops the tower from doing any calculations while being placed
         if (!canAttack)
         {
@@ -138,6 +149,15 @@ public class Tower : MonoBehaviour
         {
             healthBarObject.SetActive(true);
         }
+
+        // Updates the sell text
+        sellText.text = "Sell: $" + GetSellPrice();
+
+        // Clears the screen of towers
+        if (delete && countDown < 0)
+        {
+            Sell();
+        }
     }
 
     // Deals damage to the enemy
@@ -160,6 +180,10 @@ public class Tower : MonoBehaviour
             // Destroys the object
             SoundFX.instance.PlaySound(soundFX[1], transform, 1);
             isDestroyed = true;
+            if (!isBase)
+            {
+                LevelManager.instance.allTowers.Remove(gameObject);
+            }
             Destroy(gameObject);
         }
     }
@@ -320,7 +344,6 @@ public class Tower : MonoBehaviour
             spriteRenderer.flipX = true;
         }
         animator.SetFloat("Angle", angle);
-        Debug.Log(angle);
 
         // Rotate the tower towards the target
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
@@ -374,8 +397,13 @@ public class Tower : MonoBehaviour
 
     // Runs when a collider is clicked
     private void OnMouseDown()
-    {
-        targetingObject.SetActive(true);
+    { 
+        if (canPlace)
+        {
+            targetingObject.SetActive(true);
+            // Close other menus
+            LevelManager.instance.CloseTowerMenus(gameObject);
+        }
     }
 
     // Allows the tower to change targeting
@@ -391,9 +419,15 @@ public class Tower : MonoBehaviour
     }
 
     // Sells the tower
-    public void Sell(int price)
+    public void Sell()
     {
-        LevelManager.instance.IncreaseCurrency(price);
+        // Gives money proportial to the tower's health
+        LevelManager.instance.IncreaseCurrency(GetSellPrice());
         Destroy(gameObject);
+    }
+
+    private int GetSellPrice()
+    {
+        return (int)((price * 0.25f) + (((price * 0.75f) * (health / baseHealth))));
     }
 }

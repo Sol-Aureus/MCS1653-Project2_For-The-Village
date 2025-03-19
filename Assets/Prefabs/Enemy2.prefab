@@ -793,10 +793,10 @@ MonoBehaviour:
     m_Bits: 64
   projectilePrefab: {fileID: 4846766739089288063, guid: 1763c8688e6c1854b829976bcb2c4d5d, type: 3}
   projectileSpawnPoint: {fileID: 4540713534982367698}
-  moveSpeed: 8
+  moveSpeed: 9
   pathOffset: 0.5
-  baseHealth: 12
-  range: 3
+  baseHealth: 14
+  range: 4
   fireRate: 0.8
   damage: 3
   pierce: 999

@@ -8774,6 +8774,38 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.05}
   m_Size: {x: 0.5, y: 0.2}
   m_Direction: 1
+--- !u!1 &506424373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506424374}
+  m_Layer: 0
+  m_Name: TowerMenu
+  m_TagString: CantPlace
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506424374
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506424373}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1991614257}
+  m_Father: {fileID: 715248669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &514459448
 GameObject:
   m_ObjectHideFlags: 0
@@ -13613,6 +13645,7 @@ MonoBehaviour:
   deathMenu: {fileID: 1409115414}
   deathText: {fileID: 785925189}
   winMenu: {fileID: 554584161}
+  startCurrency: 200
   points:
   - {fileID: 67884907}
   - {fileID: 194232678}
@@ -13631,6 +13664,7 @@ MonoBehaviour:
   - {fileID: 982317540}
   - {fileID: 1244259800}
   - {fileID: 2130791212}
+  allTowers: []
   currency: 0
 --- !u!4 &639445005
 Transform:
@@ -13799,8 +13833,8 @@ MonoBehaviour:
   spawnRate: 0.8
   timeBetweenWaves: 5
   difficultyScaling: 0.4
-  baseMoney: 75
-  moneyScaling: 0.25
+  baseMoney: 80
+  moneyScaling: 0.3
   currentWave: 1
 --- !u!114 &639445008
 MonoBehaviour:
@@ -13815,6 +13849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuToggle: {fileID: 1796745496}
+  cashText: {fileID: 1765628523}
 --- !u!114 &639445009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14765,6 +14800,7 @@ Transform:
   - {fileID: 289048699}
   - {fileID: 1262218692}
   - {fileID: 911288873}
+  - {fileID: 506424374}
   - {fileID: 304978220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21505,8 +21541,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 92543193}
   - {fileID: 407739242}
+  - {fileID: 92543193}
   m_Father: {fileID: 1796745493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -47239,7 +47275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $300
+  m_text: $200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -49915,6 +49951,73 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 8, y: 2}
+  m_Direction: 1
+--- !u!1 &1991614256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1991614257}
+  - component: {fileID: 1991614258}
+  m_Layer: 0
+  m_Name: TowerMenu (1)
+  m_TagString: CantPlace
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991614257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991614256}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 13.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 506424374}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1991614258
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991614256}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 55, y: 4}
   m_Direction: 1
 --- !u!1 &2000192497
 GameObject:

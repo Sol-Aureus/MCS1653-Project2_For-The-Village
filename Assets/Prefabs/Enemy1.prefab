@@ -799,7 +799,7 @@ MonoBehaviour:
   range: 8
   fireRate: 0.4
   damage: 1
-  pierce: 1
+  pierce: 0
   speed: 30
   lifeTime: 1.2
   soundFX:

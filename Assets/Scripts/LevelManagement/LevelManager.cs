@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject deathMenu;
     [SerializeField] private TextMeshProUGUI deathText;
     [SerializeField] private GameObject winMenu;
+    [SerializeField] private int startCurrency;
 
     [Header("Path")]
     public Transform[] points;
+
+    public List<GameObject> allTowers;
 
     public int currency;
 
@@ -31,7 +35,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        currency = 300;
+        currency = startCurrency;
     }
 
     // Update is called once per frame
@@ -40,6 +44,10 @@ public class LevelManager : MonoBehaviour
         if (Input.GetButtonDown("Cancel") && !otherMenu)
         {
             Pause();
+        }
+        else if (Input.GetKeyDown("k"))
+        {
+            ClearTowers();
         }
     }
 
@@ -114,5 +122,29 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         Time.timeScale = 1;
+    }
+
+    // Removes all towers
+    public void ClearTowers()
+    {
+        foreach (GameObject tower in allTowers)
+        {
+            if (tower != null)
+            {
+                tower.GetComponent<Tower>().countDown = 0.5f;
+                tower.GetComponent<Tower>().delete = true;
+            }
+        }
+    }
+
+    public void CloseTowerMenus(GameObject currentTower)
+    {
+        foreach (GameObject tower in allTowers)
+        {
+            if (tower != currentTower && tower != null)
+            {
+                tower.GetComponent<Tower>().Close();
+            }
+        }
     }
 }
