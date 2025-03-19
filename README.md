@@ -30,6 +30,10 @@ Towers can get killed by the enemies
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
 https://kenmi-art.itch.io/cute-fantasy-rpg
+https://freesound.org/people/LiamG_SFX/sounds/322223/
+https://freesound.org/people/CogFireStudios/sounds/547040/
+https://pixabay.com/music/folk-autumn-road-239868/
+https://jfxr.frozenfractal.com/#
 
 
 
