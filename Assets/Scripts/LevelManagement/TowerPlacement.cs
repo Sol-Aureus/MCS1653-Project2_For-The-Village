@@ -8,6 +8,7 @@ public class TowerPlacement : MonoBehaviour
     [Header("References")]
     [SerializeField] private Menu menuToggle;
     [SerializeField] private TextMeshProUGUI cashText;
+    [SerializeField] private AudioClip[] soundFX;
 
     private GameObject currentPlacingTower;
     private Vector3 mouseWorldPos;
@@ -62,6 +63,7 @@ public class TowerPlacement : MonoBehaviour
             }
             else
             {
+                SoundFX.instance.PlaySound(soundFX[0], transform, 1);
                 cashText.color = new Color(255, 0, 0, 255);
                 redFlashTime = 0.5f;
             }

@@ -23,6 +23,6 @@ public class SoundMixerManager : MonoBehaviour
     // Set the volume of the sfx group
     public void SetSFXVolume(float volume)
     {
-        audioMixer.SetFloat("SFXVolume", volume);
+        audioMixer.SetFloat("SoundFXVolume", volume);
     }
 }

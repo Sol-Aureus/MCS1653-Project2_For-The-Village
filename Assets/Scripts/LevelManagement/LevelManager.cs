@@ -16,6 +16,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject winMenu;
     [SerializeField] private int startCurrency;
 
+    [Header("References")]
+    [SerializeField] private AudioClip[] soundFX;
+
     [Header("Path")]
     public Transform[] points;
 
@@ -75,6 +78,7 @@ public class LevelManager : MonoBehaviour
 
     public void Die(int waves)
     {
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
         otherMenu = true;
         deathMenu.SetActive(true);
         deathText.text = "You Died!\n\nWaves Completed: " + waves;
@@ -83,6 +87,7 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+        SoundFX.instance.PlaySound(soundFX[1], transform, 1);
         otherMenu = true;
         winMenu.SetActive(true);
         Time.timeScale = 0;
@@ -90,6 +95,7 @@ public class LevelManager : MonoBehaviour
 
     public void Pause()
     {
+        SoundFX.instance.PlaySound(soundFX[2], transform, 1);
         isPaused = !isPaused;
         pauseMenu.SetActive(isPaused);
 

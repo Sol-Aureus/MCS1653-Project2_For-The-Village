@@ -205,7 +205,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1062042405}
   m_HandleRect: {fileID: 370438452}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -50
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 2060140950}
+  soundFX:
+  - {fileID: 8300000, guid: 54b10d438e2ac714eb61990c89048fd5, type: 3}
 --- !u!114 &118976031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +687,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1075285043}
   m_HandleRect: {fileID: 583629090}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -50
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
@@ -1941,6 +1943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1246578326}
   - component: {fileID: 1246578325}
+  - component: {fileID: 1246578327}
   m_Layer: 0
   m_Name: SoundMixerManager
   m_TagString: Untagged
@@ -1976,6 +1979,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1246578327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246578324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29d41cdf4875e14ab4f7e113aceeb16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourcePrefab: {fileID: 3445251778949024296, guid: 263a37f412c161e40a27d88d6d84ba4c, type: 3}
 --- !u!1 &1321940339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,7 +3625,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1509233687}
   m_HandleRect: {fileID: 2087621596}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -50
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0

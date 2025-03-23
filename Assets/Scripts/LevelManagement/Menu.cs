@@ -8,12 +8,14 @@ public class Menu : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI currencyUI;
     [SerializeField] private Animator anim;
+    [SerializeField] private AudioClip[] soundFX;
 
     private bool isMenuOpen = true;
 
     // Toggles the menu
     public void ToggleMenu()
     {
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
         // Toggles the bool
         isMenuOpen = !isMenuOpen;
         anim.SetBool("MenuOpen", isMenuOpen);

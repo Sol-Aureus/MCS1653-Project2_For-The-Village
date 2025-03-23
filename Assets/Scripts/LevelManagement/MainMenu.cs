@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] private AudioClip[] soundFX;
 
     private void Awake()
     {
@@ -15,16 +16,19 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Options()
     {
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
         optionsMenu.SetActive(true);
     }
 
     public void Back()
     {
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
         optionsMenu.SetActive(false);
     }
 

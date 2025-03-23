@@ -13646,6 +13646,10 @@ MonoBehaviour:
   deathText: {fileID: 785925189}
   winMenu: {fileID: 554584161}
   startCurrency: 200
+  soundFX:
+  - {fileID: 8300000, guid: 07ab6d316341a684cbcb1befce2ba411, type: 3}
+  - {fileID: 8300000, guid: 23cfb9724e64e924f86893336b0644fe, type: 3}
+  - {fileID: 8300000, guid: 54b10d438e2ac714eb61990c89048fd5, type: 3}
   points:
   - {fileID: 67884907}
   - {fileID: 194232678}
@@ -13824,6 +13828,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuToggle: {fileID: 1796745496}
   cashText: {fileID: 1765628523}
+  soundFX:
+  - {fileID: 8300000, guid: 14b25a24623fc6a4e8e50d1c2f1d1fb6, type: 3}
 --- !u!114 &639445009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49103,6 +49109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currencyUI: {fileID: 1765628523}
   anim: {fileID: 1796745497}
+  soundFX:
+  - {fileID: 8300000, guid: 54b10d438e2ac714eb61990c89048fd5, type: 3}
 --- !u!95 &1796745497
 Animator:
   serializedVersion: 5
