@@ -16,19 +16,19 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
+        SoundFX.instance.PlaySound(soundFX[0], transform, 0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Options()
     {
-        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
+        SoundFX.instance.PlaySound(soundFX[0], transform, 0.5f);
         optionsMenu.SetActive(true);
     }
 
     public void Back()
     {
-        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
+        SoundFX.instance.PlaySound(soundFX[0], transform, 0.5f);
         optionsMenu.SetActive(false);
     }
 

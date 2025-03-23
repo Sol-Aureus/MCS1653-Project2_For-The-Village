@@ -95,7 +95,7 @@ public class LevelManager : MonoBehaviour
 
     public void Pause()
     {
-        SoundFX.instance.PlaySound(soundFX[2], transform, 1);
+        SoundFX.instance.PlaySound(soundFX[2], transform, 0.5f);
         isPaused = !isPaused;
         pauseMenu.SetActive(isPaused);
 

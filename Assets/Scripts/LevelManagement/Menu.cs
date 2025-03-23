@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
     // Toggles the menu
     public void ToggleMenu()
     {
-        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
+        SoundFX.instance.PlaySound(soundFX[0], transform, 0.5f);
         // Toggles the bool
         isMenuOpen = !isMenuOpen;
         anim.SetBool("MenuOpen", isMenuOpen);
