@@ -19,7 +19,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] wave8;
     [SerializeField] private GameObject[] wave9;
     [SerializeField] private GameObject[] wave10;
-    [SerializeField] private GameObject[] wave15;
 
     [Header("Atributes")]
     [SerializeField] private int baseEnemies;
@@ -121,10 +120,6 @@ public class EnemySpawner : MonoBehaviour
         {
             return wave10.Length;
         }
-        else if (currentWave == 15)
-        {
-            return wave15.Length;
-        }
         else
         {
             return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, difficultyScaling));
@@ -203,11 +198,6 @@ public class EnemySpawner : MonoBehaviour
             prefabToSpawn = wave10[increment];
             increment++;
         }
-        else if (currentWave == 15)
-        {
-            prefabToSpawn = wave15[increment];
-            increment++;
-        }
         else
         {
             // Spawns a random enemy prefab at the first point
@@ -230,7 +220,7 @@ public class EnemySpawner : MonoBehaviour
         timeToSpawn = 0;
         LevelManager.instance.IncreaseCurrency(Mathf.RoundToInt(baseMoney * Mathf.Pow(currentWave, moneyScaling)));
         
-        if (currentWave == 15)
+        if (currentWave == 10)
         {
             LevelManager.instance.Win();
         }

@@ -147,7 +147,7 @@ public class Enemy : MonoBehaviour
             // Calls the event to notify the spawner that an enemy has died
             LevelManager.instance.IncreaseCurrency((int)Mathf.Pow(scaledHealth, 0.8f));
             EnemySpawner.onEnemyDeath.Invoke();
-            SoundFX.instance.PlaySound(soundFX[1], transform, 0.6f);
+            SoundFX.instance.PlaySound(soundFX[1], transform, 1);
             isDestroyed = true;
             Destroy(gameObject);
         }
@@ -212,7 +212,7 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         // Plays the sound effect
-        SoundFX.instance.PlaySound(soundFX[0], transform, 0.8f);
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
 
         // Instantiates a projectile at the spawn point
         GameObject projectileObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);

@@ -360,7 +360,7 @@ public class Tower : MonoBehaviour
     private void Fire()
     {
         // Plays the sound effect
-        SoundFX.instance.PlaySound(soundFX[0], transform, 0.8f);
+        SoundFX.instance.PlaySound(soundFX[0], transform, 1);
 
         // Instantiates a projectile at the spawn point
         GameObject projectileObject = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
